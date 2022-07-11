@@ -227,9 +227,9 @@ fn intersects_stick(m0: DVec2, m1: DVec2, a0: DVec2, a1: DVec2, b0: DVec2, b1: D
     let a = (m1 - m0).perp_dot(b1 - b0);
     let b = m0.perp_dot(b1) + m1.perp_dot(b0) + 2. * b0.perp_dot(m0);
     let c = m0.perp_dot(b0);
-    if a == 0. {
-        if b == 0. {
-            if c == 0. && valid(m0, m1, b0, b1, 0.5) {
+    if approx_eq(a, 0.) {
+        if approx_eq(b, 0.) {
+            if approx_eq(c, 0.) && valid(m0, m1, b0, b1, 0.5) {
                 return true;
             }
         } else if valid(m0, m1, b0, b1, -c / b) {
@@ -251,11 +251,15 @@ fn intersects_stick(m0: DVec2, m1: DVec2, a0: DVec2, a1: DVec2, b0: DVec2, b1: D
 }
 
 fn valid(m0: DVec2, m1: DVec2, b0: DVec2, b1: DVec2, t: f64) -> bool {
-    if t >= 0. && t < 1. {
+    if t > 0. && t <= 1. {
         let m = m0.lerp(m1, t);
         let b = b0.lerp(b1, t);
         let dot = m.dot(b);
         return dot > 0. && dot < b.dot(b);
     }
     false
+}
+
+fn approx_eq(a: f64, b: f64) -> bool {
+    (a - b).abs() < f64::EPSILON
 }

@@ -4,8 +4,6 @@ A rope physics simulation inspired by [Sebastian Lague's video](https://www.yout
 * Drag left click between points to create a stick
 * Drag right click over points or sticks to delete them
 * Hold shift and right click to pan the camera
-* Hold shift and left click to create a line of sticks and points
+* Hold shift to create a line of sticks and points
 * Space to start and stop the simulation running
 * R to clear everything
-
-Currently slightly broken from changing to `glam`

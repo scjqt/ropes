@@ -17,7 +17,7 @@ fn main() -> GameResult {
     let window_mode = WindowMode::default().dimensions(1700., 900.);
     let window_setup = WindowSetup::default()
         .title("ropes")
-        .samples(NumSamples::Four)
+        .samples(NumSamples::Eight)
         .vsync(true);
 
     let (mut ctx, event_loop) = ContextBuilder::new("ropes", "sam")
