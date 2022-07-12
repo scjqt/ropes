@@ -52,7 +52,7 @@ impl State {
             }
         }
 
-        let point = graphics::Mesh::new_circle(
+        let point = Mesh::new_circle(
             ctx,
             DrawMode::fill(),
             [0., 0.],
@@ -72,7 +72,7 @@ impl State {
 }
 
 fn stick_mesh(ctx: &mut Context, a: DVec2, b: DVec2) -> GameResult<Mesh> {
-    graphics::Mesh::new_line(
+    Mesh::new_line(
         ctx,
         &[as_point(a), as_point(b)],
         STICK_WIDTH,
